@@ -8,19 +8,21 @@ const Movies = () => {
   const onSubmit = e => {
     e.preventDefault();
 
-    // async function getCast() {
-    //   const t = `${id}/credits`;
-    //   const { data } = await fetchAPI(t);
+    async function getCast() {
+      const l = `search/movie?query=${searchQuery}/`;
+      const { data } = await fetchAPI(l);
 
-    //   setSerchedMovies(data);
-    // }
-    // getCast();
+      setSerchedMovies(data);
+    }
+    getCast();
+    console.log(serchedMovies);
   };
 
   return (
     <>
       <input
         type="search"
+        value={searchQuery}
         onChange={({ target }) => setSearchQuery(target.value)}
       ></input>
       <button onClick={onSubmit}>Search</button>

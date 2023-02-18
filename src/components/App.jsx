@@ -5,11 +5,8 @@ import FilmDetails from './FilmDetails/FilmDetails';
 import Cast from './Cast/Cast';
 import Reviews from './Reviews/Reviews';
 import NotFound from '../pages/NotFound';
-import { useState } from 'react';
 
 const App = () => {
-  const [trendings, settrendings] = useState([]);
-
   return (
     <>
       <nav>
@@ -18,10 +15,7 @@ const App = () => {
       </nav>
 
       <Routes>
-        <Route
-          path="/"
-          element={<Home trendings={trendings} settrendings={settrendings} />}
-        ></Route>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/Movies" element={<Movies />}></Route>
         <Route path="/Movies/:id" element={<FilmDetails />}>
           <Route path="cast" element={<Cast />}></Route>

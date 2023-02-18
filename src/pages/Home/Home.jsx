@@ -1,29 +1,23 @@
 import { fetchAPI } from '../../requests';
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, memo } from 'react';
 import { Link } from 'react-router-dom';
+import useQueryResult from '../../castomHooks/useQueryResult';
 
-const Home = ({ trendings, settrendings }) => {
-  useEffect(() => {
-    async function getFilmslist() {
-      const { data } = await fetchAPI('week', 'trending');
-      settrendings(data.results);
-    }
-    getFilmslist();
-  }, []);
+const Home = () => {
+  const { queryResult } = useQueryResult('trending/movie/week?', 'home');
 
   const itemGenerate = useCallback(() => {
-    return trendings.map(({ title, id }) => (
+    return queryResult.map(({ title, id }) => (
       <Link to={`/movies/${id}`} key={id}>
         <li>{title}</li>
       </Link>
     ));
-  }, [trendings]);
+  }, [queryResult]);
 
-  const items = itemGenerate();
   return (
     <>
       <h2>Home</h2>
-      <>{items}</>
+      <>{typeof queryResult !== 'string' && itemGenerate()}</>
     </>
   );
 };
