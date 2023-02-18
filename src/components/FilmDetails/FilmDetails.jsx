@@ -1,4 +1,10 @@
-import { useParams, Link, Outlet } from 'react-router-dom';
+import {
+  useParams,
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import useQueryResult from '../../castomHooks/useQueryResult';
 
 import { useCallback } from 'react';
@@ -6,11 +12,22 @@ import { useCallback } from 'react';
 const FilmDetails = () => {
   const { id } = useParams();
   const { queryResult } = useQueryResult(`movie/${id}?`, 'filmDetails');
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const layout = useCallback(() => {
     const { poster_path, title, vote_average, overview, genres } = queryResult;
     return (
       <>
+        <button
+          onClick={() => {
+            let prevPage = location.state.from.pathname;
+
+            navigate(prevPage);
+          }}
+        >
+          Go back
+        </button>
         <section>
           <div>
             <img alt="film poster" src={poster_path} />
