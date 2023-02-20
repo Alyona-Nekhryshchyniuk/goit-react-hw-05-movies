@@ -21,8 +21,8 @@ const FilmDetails = () => {
       <>
         <button
           onClick={() => {
-            let prevPage = location.state.from.pathname;
-
+            let prevPage = location.state.from;
+            console.log(prevPage);
             navigate(prevPage);
           }}
         >

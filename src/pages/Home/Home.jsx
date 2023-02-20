@@ -1,18 +1,17 @@
-import { fetchAPI } from '../../requests';
-import { useEffect, useCallback, memo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import useQueryResult from '../../castomHooks/useQueryResult';
 
 const Home = () => {
+  const location = useLocation();
   const { queryResult } = useQueryResult('trending/movie/week?', 'home');
 
-  const itemGenerate = useCallback(() => {
+  const itemGenerate = () => {
     return queryResult.map(({ title, id }) => (
-      <Link to={`/movies/${id}`} key={id}>
+      <Link to={`/movies/${id}`} key={id} state={{ from: location }}>
         <li>{title}</li>
       </Link>
     ));
-  }, [queryResult]);
+  };
 
   return (
     <>
