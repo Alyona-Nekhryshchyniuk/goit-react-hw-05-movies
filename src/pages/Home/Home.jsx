@@ -15,8 +15,10 @@ const Home = () => {
 
   return (
     <>
-      <h2>Home</h2>
-      <>{typeof queryResult !== 'string' && itemGenerate()}</>
+      <h2>Trending today</h2>
+      <>
+        <ul>{typeof queryResult !== 'string' && itemGenerate()}</ul>
+      </>
     </>
   );
 };

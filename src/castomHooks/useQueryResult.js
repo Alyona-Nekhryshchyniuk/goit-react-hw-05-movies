@@ -30,6 +30,10 @@ const useQueryResult = (queryPart, type) => {
         case 'reviews':
           finalRusult = data.results;
           break;
+
+        case 'imgAPISizes':
+          finalRusult = data.images;
+          break;
       }
 
       setqueryResult(finalRusult);

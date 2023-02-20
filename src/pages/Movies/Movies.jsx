@@ -2,6 +2,7 @@ import { fetchAPI } from '../../requests';
 import { useState, useEffect, memo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import SearchedList from 'components/SearchedList/SearchedList';
+import css from './Movies.module.css';
 
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -26,6 +27,7 @@ const Movies = () => {
   return (
     <>
       <input
+        className={css.input}
         type="search"
         onChange={({ target }) => setSearchQuery(target.value)}
       ></input>

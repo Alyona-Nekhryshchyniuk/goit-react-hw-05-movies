@@ -1,0 +1,23 @@
+.container {
+  width: 1000px;
+  margin: 0 auto;
+}
+.headerLink:not(:last-child) {
+  margin-right: 25px;
+}
+.headerLink:hover {
+  font-size: 24px;
+}
+.headerLink {
+  color: #fac0b6;
+}
+.headerLink:global(.active) {
+  color: #fa846f;
+}
+
+header {
+  padding-top: 15px;
+  padding-bottom: 18px;
+  border-bottom: 3px double grey;
+  margin-bottom: 50px;
+}

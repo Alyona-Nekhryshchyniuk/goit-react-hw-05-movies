@@ -1,0 +1,27 @@
+.backButton {
+  position: fixed;
+  top: 23px;
+  left: 25px;
+}
+.backButton:hover {
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 36px;
+}
+.underlined {
+  text-decoration: underline;
+  padding-left: 30px;
+}
+.accentColor {
+  font-weight: 800;
+  color: #42b883;
+}
+
+.topDetails {
+  display: inline-flex;
+}
+.nearPosterDetails {
+  padding-left: 30px;
+}

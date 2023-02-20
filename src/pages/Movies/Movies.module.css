@@ -1,0 +1,13 @@
+.input {
+  height: 35px;
+  width: 375px;
+  border-radius: 3px;
+  border: 2px solid #347474;
+  margin-top: 35px;
+  margin-bottom: 35px;
+  margin-left: 75px;
+  margin-right: 35px;
+  padding-left: 15px;
+  font-size: 18px;
+  outline: none;
+}
