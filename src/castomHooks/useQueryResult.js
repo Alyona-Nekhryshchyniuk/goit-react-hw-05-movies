@@ -35,6 +35,10 @@ const useQueryResult = (queryPart, type) => {
           case 'imgAPISizes':
             finalRusult = data.images;
             break;
+
+          default:
+            finalRusult = data;
+            break;
         }
 
         setqueryResult(finalRusult);
@@ -43,7 +47,7 @@ const useQueryResult = (queryPart, type) => {
       }
     }
     get();
-  }, []);
+  }, [queryPart, type]);
 
   return { queryResult, setqueryResult };
 };
