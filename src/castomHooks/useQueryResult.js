@@ -5,38 +5,42 @@ const useQueryResult = (queryPart, type) => {
   const [queryResult, setqueryResult] = useState(queryPart, type);
   useEffect(() => {
     async function get() {
-      const { data } = await fetchAPI(queryPart);
+      try {
+        const { data } = await fetchAPI(queryPart);
 
-      let finalRusult = [];
+        let finalRusult = [];
 
-      switch (type) {
-        case 'cast':
-          const sortedActors = data.cast.sort((firstActor, secondActor) => {
-            return secondActor.popularity - firstActor.popularity;
-          });
-          let array = [];
-          for (let i = 1; i < 9; i += 1) {
-            array.push(sortedActors[i]);
-          }
-          finalRusult = array;
-          break;
+        switch (type) {
+          case 'cast':
+            const sortedActors = data.cast.sort((firstActor, secondActor) => {
+              return secondActor.popularity - firstActor.popularity;
+            });
+            let array = [];
+            for (let i = 1; i < 9; i += 1) {
+              array.push(sortedActors[i]);
+            }
+            finalRusult = array;
+            break;
 
-        case 'movies':
-        case 'filmDetails':
-          finalRusult = data;
-          break;
+          case 'movies':
+          case 'filmDetails':
+            finalRusult = data;
+            break;
 
-        case 'home':
-        case 'reviews':
-          finalRusult = data.results;
-          break;
+          case 'home':
+          case 'reviews':
+            finalRusult = data.results;
+            break;
 
-        case 'imgAPISizes':
-          finalRusult = data.images;
-          break;
+          case 'imgAPISizes':
+            finalRusult = data.images;
+            break;
+        }
+
+        setqueryResult(finalRusult);
+      } catch (error) {
+        console.log(error);
       }
-
-      setqueryResult(finalRusult);
     }
     get();
   }, []);

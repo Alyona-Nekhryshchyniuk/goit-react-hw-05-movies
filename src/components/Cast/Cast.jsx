@@ -8,6 +8,8 @@ const Cast = ({ dataImg }) => {
 
   const { queryResult } = useQueryResult(`movie/${id}/credits?`, 'cast');
 
+  const check = Boolean(typeof queryResult !== 'string' && queryResult[0]);
+
   const itemsCreate = useCallback(() => {
     return queryResult.map(({ profile_path, name, character, cast_id }) => (
       <li key={cast_id}>
@@ -26,6 +28,6 @@ const Cast = ({ dataImg }) => {
     ));
   }, [queryResult, dataImg.base_url, dataImg.profile_sizes]);
 
-  return <ul>{typeof queryResult !== 'string' && itemsCreate()}</ul>;
+  return <ul>{check && itemsCreate()}</ul>;
 };
 export default Cast;

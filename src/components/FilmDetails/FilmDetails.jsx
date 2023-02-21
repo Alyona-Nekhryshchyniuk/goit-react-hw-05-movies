@@ -26,7 +26,7 @@ const FilmDetails = ({ dataImg }) => {
         <button
           className={css.backButton}
           onClick={() => {
-            let prevPage = location.state.from;
+            let prevPage = location.state?.from ?? '/';
             navigate(prevPage);
           }}
         >
@@ -36,7 +36,10 @@ const FilmDetails = ({ dataImg }) => {
           <div>
             <img
               alt=""
-              src={`${dataImg.base_url}${dataImg.still_sizes[2]}${poster_path}`}
+              src={
+                poster_path &&
+                `${dataImg.base_url}${dataImg.still_sizes[2]}${poster_path}`
+              }
             />
           </div>
           <div className={css.nearPosterDetails}>
@@ -60,12 +63,12 @@ const FilmDetails = ({ dataImg }) => {
         <section>
           <h3>Additional information</h3>
           <ul>
-            <Link to="cast">
+            <Link to="cast" state={{ from: location.state?.from ?? '/' }}>
               <li className={clsx(css.underlined, css.accentColor)}>
                 <b>Cast</b>
               </li>
             </Link>
-            <Link to="reviews">
+            <Link to="reviews" state={{ from: location.state?.from ?? '/' }}>
               <li className={clsx(css.underlined, css.accentColor)}>
                 <b>Reviews</b>
               </li>

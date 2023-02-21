@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './SharedLayout';
 import Home from '../pages/Home/Home';
 import Movies from '../pages/Movies/Movies';
-
 import useQueryResult from '../castomHooks/useQueryResult';
 
 const FilmDetails = lazy(() => import('./FilmDetails/FilmDetails'));
